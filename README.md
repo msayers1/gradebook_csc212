@@ -2,7 +2,7 @@
 
 
 group memebr names:
-Michael Sayers msayers1, Vanessa Melgar vmelgara9272
+Michael Sayers msayers1, Vanessa Melgar vmelgar9272
 
 
 a brief summary of the project and github repo address (with allowed access for viewing) for member contributions (most easily shown through commits in the repo where your project lives)
