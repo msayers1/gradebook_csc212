@@ -49,7 +49,7 @@ file.h/file.cpp
             get totalpoints
             get category
             get weight
-            get class
+            get course
             get entered
 
     }
@@ -64,7 +64,7 @@ void WriteFile(std::string file_name, std::vector<std::vector<double>> * const i
         write totalpoints
         write category
         write weight
-        write class
+        write course
         write entered 
 }
 Main.cpp
@@ -87,7 +87,7 @@ start continous loop
 // Grade and Total points will be whole numbers and just add it as a limitation or we can set them to floats/double. The main point is that they are numbers not percentages. 
 // But we can leave off class since it will just be one value for this project.
 database.txt
-id name grade total_points category weight class entered 
+id name grade total_points category weight course entered 
 3 assignment1 5 10 assignment 10 csc212 1
 4 quiz1 75 100 quiz 30 csc212 1
 5 quiz2 0 100 quiz 30 csc212 0
