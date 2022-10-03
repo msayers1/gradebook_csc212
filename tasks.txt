@@ -1,0 +1,7 @@
+mike - main.cpp, addentry, modify entry, 
+
+linda-catgrade, class gradebook 
+
+vanessa-whatifreport, mingrade
+
+shina-finalgrade, printcoursework
