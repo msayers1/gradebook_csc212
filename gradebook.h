@@ -33,15 +33,18 @@ class Gradebook
 
     double finalGrade();
 
-    double minGrade();
-
-    double whatIfReport();
+    void minGrade();
+    
+    void whatIfReport();
 
     void addGrade();
 
     void removeGrade();
-    //Removed for redundancy since addGrade modifies or adds the grade. 
-    //void ModifyEntry();
+    
+    //Helper functions
+    int selectionInput(int n);
+    double gradeInput();
+    
     //Loads a new file into memory. 
     void loadNewFile(std::string filename);
     //Saves as a new file. 
