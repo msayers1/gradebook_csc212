@@ -50,25 +50,23 @@ Description of each function
             weighted grade is above a 90.
 
     minGrade
-        Type: Double
+        Type: Void
         Arguments Accepted: None
             This function calculates the minimum grade necessary to get a desired grade in a 
             category. The user will be prompted to enter a number 1 or 2. 1 to select 
-            assignments. 2 to select labs. It will then calculate and print the current 
-            grade in the selected category. The user will then be prompted to enter their 
+            assignments. 2 to select labs. The user will then be prompted to enter their 
             desired grade in the category. The function will then calculate what the lowest 
             grade the student may receive on the rest of the coursework of that category in 
             order to reach the entered desired grade.
 
     whatIfReport
-        Type: Double
+        Type: Void
         Arguments Accepted: None
            This function will calculate a hypothetical grade based on user-input for each 
            category. The user will be prompted to enter a double from 1 to 100 for each of 
-           the following categories: assignments, labs and projects. Entering an exam grade 
-           will be optional. After valid user input is received for each category, this 
-           function will call the finalGrade function to calculate a hypothetical final 
-           grade and return it as a double value.
+           the following categories: assignments, labs, projects and extra credit. Entering 
+           an exam grade will be optional. After valid user input is received for each       
+           category, this function will calculate a hypothetical final grade and print it.
 
     addEntry
         Type: Void
