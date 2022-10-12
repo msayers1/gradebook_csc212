@@ -312,3 +312,121 @@ void Gradebook::whatIfReport(){
         }
     }
 }
+
+double Gradebook::finalGrade()
+{
+    // variables to store grade with and without exam available
+    double final_grade, no_exam;
+
+    // this bool will check if final exam is available
+    bool theresFinal = true;
+
+    // add up the grades
+    for (int i = 0; i < grade.size(); i++)
+    {
+        final_grade += grade[i];
+    }
+
+    // set the other vairable to the sum of all the grades
+    no_exam = final_grade;
+
+    // now we remove final grades from the total
+    for (int j = 0; j < grade.size(); j++)
+    {
+        if (category[i] == "exam")
+        {
+            no_exam -= grade[i]
+        }
+    }
+
+    //check if final exam is available
+    for (int k = 0; k < grade.size(); k++)
+    {
+        if ((category[i] == "exam") && (entered[i] == 0))
+        {
+            theresFinal = false;
+        }
+    }
+
+
+//print the grade depening on the presence or absence of a final exam grade
+    if (theresFinal)
+    {
+        if (no_exam > 900)
+        {
+            std::cout << "your grade without your final exam is " << no_exam << " you are exempt from the final exam" << std::endl;
+        }
+        else
+        {
+            std::cout << "your grade without your final exam is " << no_exam << " you are not exempt from the final exam" << std::endl;
+        }
+    }
+    else
+        std::cout << "Your final grade is: " << final_grade << "." << std::endl;
+}
+
+void Gradebook::printCourseWork()
+{
+
+    // asks user to enter an input to get results.
+    std::cout << "Please enter a number from 1-5" << std::endl;
+    std::cout << "Enter 1 to print assignments" << std::endl;
+    std::cout << "Enter 2  to print labs" << std::endl;
+    std::cout << "Enter 3 to print projects" << std::endl;
+    std::cout << "Enter 4 to print exams" << std::endl;
+    std::cout << "Enter 5 to print all" << std::endl;
+
+    // call to function to check if input is valid.
+    int input = selectionInput(5);
+
+    // switch statements for each input
+    switch (input)
+    {
+    case 1:
+        for (int i = 0; i < name.size(); i++)
+        {
+            if ((category_value[i] == "assignment") && (entered[i] == 1))
+            {
+                std::cout << name[i] << " = " << grade[i] << std::endl;
+            }
+        }
+        break;
+    case 2:
+        for (int i = 0; i < name.size(); i++)
+        {
+            if ((category[i] == "lab") && (entered[i] == 1))
+            {
+                std::cout << name[i] << " = " << grade[i] << std::endl;
+            }
+        }
+        break;
+    case 3:
+        for (int i = 0; i < name.size(); i++)
+        {
+            if ((category[i] == "project") && (entered[i] == 1))
+            {
+                std::cout << name[i] << " = " << grade[i] << std::endl;
+            }
+        }
+        break;
+    case 4:
+        for (int i = 0; i < name.size(); i++)
+        {
+            if ((category[i] == "exam") && (entered[i] == 1))
+            {
+                std::cout << name[i] << " = " << grade[i] << std::endl;
+            }
+        }
+        break;
+    case 5:
+        for (int i = 0; i < name.size(); i++)
+        {
+            std::cout << name[i] << " = " << grade[i] << std::endl;
+        }
+        break;
+
+    default:
+        std::cout << std::endl;
+        break;
+    }
+}
