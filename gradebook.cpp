@@ -207,6 +207,95 @@ void Gradebook::saveAs(std::string input_filename){
 
 
 
+
+
+// add to file.cpp
+ #include <iostream>
+ #include <stdlib.h>
+ #include <vector>
+ #include <fstream>
+ #include <algorithm>
+ #include <sstream>
+ #include <cmath>
+ #include <string>
+
+
+
+// catGrade
+//     Type: Double
+//     Arguments Accepted: None
+//         This will calculate the average grade of a selected category.
+//         It will return a double value based on current reported grades.
+//           The user will be prompted to enter a number 1 to 4.
+        //   1 to select assignments.
+//           2 to select labs
+         //  3 to select projects.
+//           4 to select exams
+          // 5 to select quiz.
+//.        After valid user input is received, the function
+//         will iterate through the vector of the selected data member, compute the average
+//         grade in the category and print it for the user.
+
+
+// similiar to mingrade
+double Gradebook::catGrade(){
+
+    int input = 0;
+    double sum = 0;
+    double avg = 0;
+    std::string name;
+    std::string category;
+
+   // prints out prompt for user to pick from
+    std::cout << "Press 1 to calculate average for assignments " << std::endl;
+    std::cout << "Press 2 to calculate average for labs" << std::endl;
+    std::cout << "Press 3 to calculate average for projects" << std::endl;
+    std::cout << "Press 4 to calculate average for exams" << std::endl;
+    std::cout << "Press 5 to calculate average for quiz" << std::endl;
+
+    // If user selected , sets the "category" string to "assignment" to calculate based on student's current assignment grades
+    // option 1
+    if(input == 1){
+        category += "assignment";
+    }
+    else if (input == 2){
+        category += "lab";
+    }
+    else if (input == 3 ){
+        category += "project";
+    }
+    else if (input == 4 ){
+        category += "exam";
+    }
+    else{
+        category += "quiz";
+    }
+
+    // goes through the gradebook
+    for(int i = 0; i < gradebook.size(); i++){
+
+        //// searches for coursework of selected category
+        if(name[i] == category){
+            // goes through the all the specific elements of chosen category
+            for(int i = 0; i < category.size(); i++){
+                // adds the sum of the specific category
+                sum += category[i];
+                // calculates the average of the category
+                avg = sum / category;
+                // prints out to the user what the average of the category is.
+                std::cout << "The calculated average for this category is" << avg << std::endl;
+                    }
+                }
+            else{
+                // user must type in correct category name from gradebook or statement will appear.
+                std::cout << "Not a valid category, cannot do calculations. " << std::endl;
+            }
+        }
+    return avg;
+}
+
+
+
 // Calculates the minimum grade necessary to get a desired grade in a selected category
 void Gradebook::minGrade(){
     // Prompts user to enter 1 to calculate min grade for assignments and 2 for labs
