@@ -350,7 +350,7 @@ double Gradebook::finalGrade()
 
 
 //print the grade depening on the presence or absence of a final exam grade
-    if (theresFinal)
+    if (theresFinal == false)
     {
         if (no_exam > 900)
         {
