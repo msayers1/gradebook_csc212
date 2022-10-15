@@ -28,22 +28,20 @@ class Gradebook
     // parameter constructor???
     Gradebook(std::string filename);
     
-    // add your method functions here, modify if necessary
-    double catGrade();
+    //Helper functions
+    int selectionInput(int n);
+    double gradeInput(int max_pts);
+    
+    void addEntry();
 
+    void addGrade();
+    void removeGrade();
+
+    double catGrade();
     double finalGrade();
 
     void minGrade();
-    
     void whatIfReport();
-
-    void addGrade();
-
-    void removeGrade();
-    
-    //Helper functions
-    int selectionInput(int n);
-    double gradeInput();
     
     //Loads a new file into memory. 
     void loadNewFile(std::string filename);

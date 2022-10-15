@@ -135,6 +135,73 @@ double Gradebook::gradeInput(double max_pts){
 }
 
 
+// Adds new entry to the list
+void Gradebook::addEntry(){
+    // Index of new entry
+    int idx = id.size();
+
+    // Adds to counter in Gradebook to keep track of number of assignments
+    this->assignmentCount ++;
+
+    // Adds new id to the "id" data member
+    id.push_back(idx + 1);
+
+    // Name of course added: "csc212"
+    course.push_back("csc212");
+
+    std::cout << "Please enter the following information: " << std::endl;
+
+    // Requests total points the coursework is worth
+    std::cout << "\tTotal Points the courswork is worth: ";
+    double max_pts;
+    std::cin >> max_pts;
+    total_points.push_back(max_pts);
+
+    // Requests weight of the coursework
+    std::cout << "\tWeight of the courswork: ";
+    double new_weight;
+    std::cin >> new_weight;
+    weight.push_back(new_weight);
+
+    // Asks if the courswork has been completed yet
+    std::cout << "\tHas the coursework being entered been completed? Enter 1 for yes and 2 for no: ";
+    bool isCompleted = selectionInput(2);
+    // If so, a grade is requested
+    if(isCompleted){
+        entered.push_back(1);
+        std::cout << "\tGrade: ";
+        grade.push_back(gradeInput(total_points[idx]));
+    }
+    else{
+        entered.push_back(0);
+    }
+
+    // Requests category of coursework
+    std::cout << "\tWhat type of courswork is being entered? Enter 1 for assignment, 2 for lab, 3 for project, 4 for exam and 5 for extra credit: ";
+    int selected_category = selectionInput(5);
+    switch(selected_category){
+        case 1:
+            category.push_back("assignment");
+            break;
+        case 2:
+            category.push_back("lab");
+        case 3:
+            category.push_back("project");
+        case 4:
+            category.push_back("exam");
+        case 5:
+            category.push_back("extra credit");
+    }
+
+    // Requests name of assignment
+    std::cout << "\tName of new assignment: ";
+    std::string name_val;
+    std::cin >> name_val;
+    name.push_back(name_val);
+
+    // Saves the file
+    saveFile(filename);
+}
 
 
 void Gradebook::addGrade(){
@@ -344,7 +411,7 @@ void Gradebook::minGrade(){
 
     // If there is no courswork of the selected category in the gradebook, exit the function as there is nothing to calculate
     if(max_pts == 0){
-        std::cout << "\nThere is no courswork of type \"" << category << "\" recorded in your gradebook." << std::endl;
+        std::cout << "\nThere is no courswork of type \"" << selected_category << "\" recorded in your gradebook." << std::endl;
         return;
     }
     // If the student completed all courswork of the selected category, exit the function as there is nothing to calculate
