@@ -113,7 +113,7 @@ int Gradebook::selectionInput(int n){
 }
 
 // Assures that input is between a double value of 0 to 100
-double Gradebook::gradeInput(){
+double Gradebook::gradeInput(double max_pts){
     // Initializes a variable for input and sets a boolean to true to represent an invalid input
     double input;
     bool grade_invalid = true;
@@ -121,8 +121,8 @@ double Gradebook::gradeInput(){
         // Has user enter input
         std::cin >> input;
         // If input is invalid, loop to request new input
-        if(input < 0 || input > 100){
-            std::cout << "Your input is invalid. Please enter a number from 1 to 100: " << std::endl;
+        if(input < 0 || input > max_pts){
+            std::cout << "Your input is invalid. Please enter a number from 1 to " << max_pts << ": " << std::endl;
         }
         // Otherwise, exit loop by setting "grade_invalid" to false
         else{
@@ -315,7 +315,7 @@ void Gradebook::minGrade(){
 
     // Prompts user to enter grade they wish to get in the selected category
     std::cout << "\nEnter desired grade for selected coursework: ";
-    double desired_grade = gradeInput();
+    double desired_grade = gradeInput(100);
     double minimum_grade;
 
     // Represents total points available to earn in selected category
@@ -360,15 +360,15 @@ void Gradebook::minGrade(){
 // Calculate a hypothetical grade based on user-input for each category
 void Gradebook::whatIfReport(){
     // Prompts user to enter hypothetical grades for each category
-    std::cout << "Enter hypothetical grades for the following categories." << std::endl;
+    std::cout << "\nEnter hypothetical grades for the following categories." << std::endl;
     std::cout << "Assignments: ";
-    double assignment_grade = gradeInput() / 100;
+    double assignment_grade = gradeInput(100) / 100;
     std::cout << "Labs: ";
-    double lab_grade = gradeInput() / 100;
+    double lab_grade = gradeInput(100) / 100;
     std::cout << "Projects: ";
-    double project_grade = gradeInput() / 100;
+    double project_grade = gradeInput(100) / 100;
     std::cout << "Extra Credit: ";
-    double extra_credit_grade = gradeInput() / 100;
+    double extra_credit_grade = gradeInput(100) / 100;
 
     // Asks the user if they wish to include the final exam
     std::cout << "\nHave you taken the final exam in this hypothetical situation? Press 1 for yes or 2 for no." << std::endl;
@@ -380,7 +380,7 @@ void Gradebook::whatIfReport(){
     // If they select yes, ask them to input their grade
     if(input == 1){
         std::cout << "Final Exam: ";
-        double final_exam_grade = gradeInput() / 100;
+        double final_exam_grade = gradeInput(100) / 100;
     }
 
     // Calculate the final grade with the given values
