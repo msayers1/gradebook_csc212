@@ -179,20 +179,18 @@ void Gradebook::addEntry(){
     // Requests category of coursework
     std::cout << "\tWhat type of courswork is being entered? Enter 1 for assignment, 2 for lab, 3 for project, 4 for exam and 5 for extra credit: ";
     int selected_category = selectionInput(5);
-    if(selected_category == 1){
-        category.push_back("assignment");
-    }
-    else if(selected_category == 2){
-        category.push_back("lab");
-    }
-    else if(selected_category == 3){
-        category.push_back("project");
-    }
-    else if(selected_category == 4){
-        category.push_back("exam");
-    }
-    else if(selected_category == 5){
-        category.push_back("extra credit");
+    switch(selected_category){
+        case 1:
+            category.push_back("assignment");
+            break;
+        case 2:
+            category.push_back("lab");
+        case 3:
+            category.push_back("project");
+        case 4:
+            category.push_back("exam");
+        case 5:
+            category.push_back("extra credit");
     }
 
     // Requests name of assignment
@@ -413,7 +411,7 @@ void Gradebook::minGrade(){
 
     // If there is no courswork of the selected category in the gradebook, exit the function as there is nothing to calculate
     if(max_pts == 0){
-        std::cout << "\nThere is no courswork of type \"" << category << "\" recorded in your gradebook." << std::endl;
+        std::cout << "\nThere is no courswork of type \"" << selected_category << "\" recorded in your gradebook." << std::endl;
         return;
     }
     // If the student completed all courswork of the selected category, exit the function as there is nothing to calculate
