@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <sstream>
 #include <fstream>
+#include <iomanip>
 #include "gradebook.h"
  // properties of a gradebook
     // double grade;
@@ -239,58 +240,58 @@ void Gradebook::saveAs(std::string input_filename){
 
 // similiar to mingrade
 double Gradebook::catGrade(){
-
-    int input = 0;
     double sum = 0;
     double avg = 0;
-    std::string name;
-    std::string category;
+    std::string selected_category;
 
    // prints out prompt for user to pick from
-    std::cout << "Press 1 to calculate average for assignments " << std::endl;
+    std::cout << "\nPress 1 to calculate average for assignments " << std::endl;
     std::cout << "Press 2 to calculate average for labs" << std::endl;
     std::cout << "Press 3 to calculate average for projects" << std::endl;
     std::cout << "Press 4 to calculate average for exams" << std::endl;
     std::cout << "Press 5 to calculate average for quiz" << std::endl;
 
+    // Requests input from user to select category
+    int input = selectionInput(5);
+
     // If user selected , sets the "category" string to "assignment" to calculate based on student's current assignment grades
     // option 1
     if(input == 1){
-        category += "assignment";
+        selected_category += "assignment";
     }
     else if (input == 2){
-        category += "lab";
+        selected_category += "lab";
     }
     else if (input == 3 ){
-        category += "project";
+        selected_category += "project";
     }
     else if (input == 4 ){
-        category += "exam";
+        selected_category += "exam";
     }
     else{
-        category += "quiz";
+        selected_category += "quiz";
     }
 
+    // Counter for grades found in this category
+    int grade_counter = 0;
+ 
     // goes through the gradebook
-    for(int i = 0; i < gradebook.size(); i++){
+    for(int i = 0; i < id.size(); i++){
 
         //// searches for coursework of selected category
-        if(name[i] == category){
-            // goes through the all the specific elements of chosen category
-            for(int i = 0; i < category.size(); i++){
-                // adds the sum of the specific category
-                sum += category[i];
-                // calculates the average of the category
-                avg = sum / category;
-                // prints out to the user what the average of the category is.
-                std::cout << "The calculated average for this category is" << avg << std::endl;
-                    }
-                }
-            else{
-                // user must type in correct category name from gradebook or statement will appear.
-                std::cout << "Not a valid category, cannot do calculations. " << std::endl;
-            }
+        if(category[i] == selected_category && entered[i] == 1){
+            // When a grade from the category is found, increase the counter
+            grade_counter++;
+            // adds the sum of the specific category
+            sum += grade[i];
         }
+    }
+    if(grade_counter == 0){
+        std::cout << "There are no grades listed in this category, cannot do calculations. " << std::endl;
+    }
+    avg = sum / grade_counter;
+    // prints out to the user what the average of the category is.
+    std::cout << std::setprecision(3) << "\nThe calculated average for this category is " << avg << std::endl;
     return avg;
 }
 
