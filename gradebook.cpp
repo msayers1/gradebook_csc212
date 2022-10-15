@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <sstream>
 #include <fstream>
+#include <iomanip>
 #include "gradebook.h"
  // properties of a gradebook
     // double grade;
@@ -113,7 +114,7 @@ int Gradebook::selectionInput(int n){
 }
 
 // Assures that input is between a double value of 0 to 100
-double Gradebook::gradeInput(){
+double Gradebook::gradeInput(double max_pts){
     // Initializes a variable for input and sets a boolean to true to represent an invalid input
     double input;
     bool grade_invalid = true;
@@ -121,8 +122,8 @@ double Gradebook::gradeInput(){
         // Has user enter input
         std::cin >> input;
         // If input is invalid, loop to request new input
-        if(input < 0 || input > 100){
-            std::cout << "Your input is invalid. Please enter a number from 1 to 100: " << std::endl;
+        if(input < 0 || input > max_pts){
+            std::cout << "Your input is invalid. Please enter a number from 1 to " << max_pts << ": " << std::endl;
         }
         // Otherwise, exit loop by setting "grade_invalid" to false
         else{
@@ -207,26 +208,115 @@ void Gradebook::saveAs(std::string input_filename){
 
 
 
+
+
+// add to file.cpp
+ #include <iostream>
+ #include <stdlib.h>
+ #include <vector>
+ #include <fstream>
+ #include <algorithm>
+ #include <sstream>
+ #include <cmath>
+ #include <string>
+
+
+
+// catGrade
+//     Type: Double
+//     Arguments Accepted: None
+//         This will calculate the average grade of a selected category.
+//         It will return a double value based on current reported grades.
+//           The user will be prompted to enter a number 1 to 4.
+        //   1 to select assignments.
+//           2 to select labs
+         //  3 to select projects.
+//           4 to select exams
+          // 5 to select quiz.
+//.        After valid user input is received, the function
+//         will iterate through the vector of the selected data member, compute the average
+//         grade in the category and print it for the user.
+
+
+// similiar to mingrade
+double Gradebook::catGrade(){
+    double sum = 0;
+    double avg = 0;
+    std::string selected_category;
+
+   // prints out prompt for user to pick from
+    std::cout << "\nPress 1 to calculate average for assignments " << std::endl;
+    std::cout << "Press 2 to calculate average for labs" << std::endl;
+    std::cout << "Press 3 to calculate average for projects" << std::endl;
+    std::cout << "Press 4 to calculate average for exams" << std::endl;
+    std::cout << "Press 5 to calculate average for quiz" << std::endl;
+
+    // Requests input from user to select category
+    int input = selectionInput(5);
+
+    // If user selected , sets the "category" string to "assignment" to calculate based on student's current assignment grades
+    // option 1
+    if(input == 1){
+        selected_category += "assignment";
+    }
+    else if (input == 2){
+        selected_category += "lab";
+    }
+    else if (input == 3 ){
+        selected_category += "project";
+    }
+    else if (input == 4 ){
+        selected_category += "exam";
+    }
+    else{
+        selected_category += "quiz";
+    }
+
+    // Counter for grades found in this category
+    int grade_counter = 0;
+ 
+    // goes through the gradebook
+    for(int i = 0; i < id.size(); i++){
+
+        //// searches for coursework of selected category
+        if(category[i] == selected_category && entered[i] == 1){
+            // When a grade from the category is found, increase the counter
+            grade_counter++;
+            // adds the sum of the specific category
+            sum += grade[i];
+        }
+    }
+    if(grade_counter == 0){
+        std::cout << "There are no grades listed in this category, cannot do calculations. " << std::endl;
+    }
+    avg = sum / grade_counter;
+    // prints out to the user what the average of the category is.
+    std::cout << std::setprecision(3) << "\nThe calculated average for this category is " << avg << std::endl;
+    return avg;
+}
+
+
+
 // Calculates the minimum grade necessary to get a desired grade in a selected category
 void Gradebook::minGrade(){
     // Prompts user to enter 1 to calculate min grade for assignments and 2 for labs
-    std::cout << "Press 1 to choose assignments." << std::endl;
+    std::cout << "\nPress 1 to choose assignments." << std::endl;
     std::cout << "Press 2 to choose labs." << std::endl;
     int input = selectionInput(2);
     // Stores the category selected in a string
-    std::string category;
-    // If user selected 1, sets the "category" string to "assignment" to calculate based on student's current assignment grades
+    std::string selected_category;
+    // If user selected 1, sets the "selected_category" string to "assignment" to calculate based on student's current assignment grades
     if(input == 1){
-        category += "assignment";
+        selected_category += "assignment";
     }
-    // If user selected 2, sets the "category" string to "lab" to calculate based on student's current lab grades
+    // If user selected 2, sets the "selected_category" string to "lab" to calculate based on student's current lab grades
     else if(input == 2){
-        category += "lab";
+        selected_category += "lab";
     }
 
     // Prompts user to enter grade they wish to get in the selected category
-    std::cout << "Enter desired grade for selected coursework: ";
-    double desired_grade = gradeInput();
+    std::cout << "\nEnter desired grade for selected coursework: ";
+    double desired_grade = gradeInput(100);
     double minimum_grade;
 
     // Represents total points available to earn in selected category
@@ -237,8 +327,8 @@ void Gradebook::minGrade(){
     int remaining = 0;
 
     // Iterates through gradebook, searching for courswork of selected category
-    for(int i = 0; i < grade.size(); i++){
-        if(name[i] == category){
+    for(int i = 0; i < id.size(); i++){
+        if(category[i] == selected_category){
             // Adds how many points the individual coursework is worth to "max_pts"
             max_pts += total_points[i];
             if(entered[i] == 1){
@@ -254,12 +344,12 @@ void Gradebook::minGrade(){
 
     // If there is no courswork of the selected category in the gradebook, exit the function as there is nothing to calculate
     if(max_pts == 0){
-        std::cout << "There is no courswork of type \"" << category << "\" recorded in your gradebook." << std::endl;
+        std::cout << "\nThere is no courswork of type \"" << category << "\" recorded in your gradebook." << std::endl;
         return;
     }
     // If the student completed all courswork of the selected category, exit the function as there is nothing to calculate
     if(remaining == 0){
-        std::cout << "Your gradebook reads that there is no more coursework of that type to complete this semester. If this does not seem correct, please press 1 in the main menu to print your current corsework or press 6 to add an entry to the gradebook." << std::endl;
+        std::cout << "\nYour gradebook reads that there is no more coursework of that type to complete this semester. If this does not seem correct, please press 1 in the main menu to print your current corsework or press 6 to add an entry to the gradebook." << std::endl;
         return;
     }
 
@@ -271,15 +361,15 @@ void Gradebook::minGrade(){
 // Calculate a hypothetical grade based on user-input for each category
 void Gradebook::whatIfReport(){
     // Prompts user to enter hypothetical grades for each category
-    std::cout << "Enter hypothetical grades for the following categories." << std::endl;
+    std::cout << "\nEnter hypothetical grades for the following categories." << std::endl;
     std::cout << "Assignments: ";
-    double assignment_grade = gradeInput() / 100;
+    double assignment_grade = gradeInput(100) / 100;
     std::cout << "Labs: ";
-    double lab_grade = gradeInput() / 100;
+    double lab_grade = gradeInput(100) / 100;
     std::cout << "Projects: ";
-    double project_grade = gradeInput() / 100;
+    double project_grade = gradeInput(100) / 100;
     std::cout << "Extra Credit: ";
-    double extra_credit_grade = gradeInput() / 100;
+    double extra_credit_grade = gradeInput(100) / 100;
 
     // Asks the user if they wish to include the final exam
     std::cout << "\nHave you taken the final exam in this hypothetical situation? Press 1 for yes or 2 for no." << std::endl;
@@ -291,7 +381,7 @@ void Gradebook::whatIfReport(){
     // If they select yes, ask them to input their grade
     if(input == 1){
         std::cout << "Final Exam: ";
-        double final_exam_grade = gradeInput() / 100;
+        double final_exam_grade = gradeInput(100) / 100;
     }
 
     // Calculate the final grade with the given values
@@ -310,5 +400,123 @@ void Gradebook::whatIfReport(){
             // If their final grade < 90, they are not exempt
             std::cout << "No" << std::endl;
         }
+    }
+}
+
+double Gradebook::finalGrade()
+{
+    // variables to store grade with and without exam available
+    double final_grade, no_exam;
+
+    // this bool will check if final exam is available
+    bool theresFinal = true;
+
+    // add up the grades
+    for (int i = 0; i < grade.size(); i++)
+    {
+        final_grade += grade[i];
+    }
+
+    // set the other vairable to the sum of all the grades
+    no_exam = final_grade;
+
+    // now we remove final grades from the total
+    for (int j = 0; j < grade.size(); j++)
+    {
+        if (category[i] == "exam")
+        {
+            no_exam -= grade[i]
+        }
+    }
+
+    //check if final exam is available
+    for (int k = 0; k < grade.size(); k++)
+    {
+        if ((category[i] == "exam") && (entered[i] == 0))
+        {
+            theresFinal = false;
+        }
+    }
+
+
+//print the grade depening on the presence or absence of a final exam grade
+    if (theresFinal == false)
+    {
+        if (no_exam > 900)
+        {
+            std::cout << "your grade without your final exam is " << no_exam << " you are exempt from the final exam" << std::endl;
+        }
+        else
+        {
+            std::cout << "your grade without your final exam is " << no_exam << " you are not exempt from the final exam" << std::endl;
+        }
+    }
+    else
+        std::cout << "Your final grade is: " << final_grade << "." << std::endl;
+}
+
+void Gradebook::printCourseWork()
+{
+
+    // asks user to enter an input to get results.
+    std::cout << "Please enter a number from 1-5" << std::endl;
+    std::cout << "Enter 1 to print assignments" << std::endl;
+    std::cout << "Enter 2  to print labs" << std::endl;
+    std::cout << "Enter 3 to print projects" << std::endl;
+    std::cout << "Enter 4 to print exams" << std::endl;
+    std::cout << "Enter 5 to print all" << std::endl;
+
+    // call to function to check if input is valid.
+    int input = selectionInput(5);
+
+    // switch statements for each input
+    switch (input)
+    {
+    case 1:
+        for (int i = 0; i < name.size(); i++)
+        {
+            if ((category_value[i] == "assignment") && (entered[i] == 1))
+            {
+                std::cout << name[i] << " = " << grade[i] << std::endl;
+            }
+        }
+        break;
+    case 2:
+        for (int i = 0; i < name.size(); i++)
+        {
+            if ((category[i] == "lab") && (entered[i] == 1))
+            {
+                std::cout << name[i] << " = " << grade[i] << std::endl;
+            }
+        }
+        break;
+    case 3:
+        for (int i = 0; i < name.size(); i++)
+        {
+            if ((category[i] == "project") && (entered[i] == 1))
+            {
+                std::cout << name[i] << " = " << grade[i] << std::endl;
+            }
+        }
+        break;
+    case 4:
+        for (int i = 0; i < name.size(); i++)
+        {
+            if ((category[i] == "exam") && (entered[i] == 1))
+            {
+                std::cout << name[i] << " = " << grade[i] << std::endl;
+            }
+        }
+        break;
+    case 5:
+        for (int i = 0; i < name.size(); i++)
+        {
+            std::cout << name[i] << " = " << grade[i] << std::endl;
+        }
+        break;
+
+    default:
+        std::cout << std::endl;
+        break;
     }
 }
