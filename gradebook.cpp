@@ -299,22 +299,22 @@ double Gradebook::catGrade(){
 // Calculates the minimum grade necessary to get a desired grade in a selected category
 void Gradebook::minGrade(){
     // Prompts user to enter 1 to calculate min grade for assignments and 2 for labs
-    std::cout << "Press 1 to choose assignments." << std::endl;
+    std::cout << "\nPress 1 to choose assignments." << std::endl;
     std::cout << "Press 2 to choose labs." << std::endl;
     int input = selectionInput(2);
     // Stores the category selected in a string
-    std::string category;
-    // If user selected 1, sets the "category" string to "assignment" to calculate based on student's current assignment grades
+    std::string selected_category;
+    // If user selected 1, sets the "selected_category" string to "assignment" to calculate based on student's current assignment grades
     if(input == 1){
-        category += "assignment";
+        selected_category += "assignment";
     }
-    // If user selected 2, sets the "category" string to "lab" to calculate based on student's current lab grades
+    // If user selected 2, sets the "selected_category" string to "lab" to calculate based on student's current lab grades
     else if(input == 2){
-        category += "lab";
+        selected_category += "lab";
     }
 
     // Prompts user to enter grade they wish to get in the selected category
-    std::cout << "Enter desired grade for selected coursework: ";
+    std::cout << "\nEnter desired grade for selected coursework: ";
     double desired_grade = gradeInput();
     double minimum_grade;
 
@@ -326,8 +326,8 @@ void Gradebook::minGrade(){
     int remaining = 0;
 
     // Iterates through gradebook, searching for courswork of selected category
-    for(int i = 0; i < grade.size(); i++){
-        if(name[i] == category){
+    for(int i = 0; i < id.size(); i++){
+        if(category[i] == selected_category){
             // Adds how many points the individual coursework is worth to "max_pts"
             max_pts += total_points[i];
             if(entered[i] == 1){
@@ -343,12 +343,12 @@ void Gradebook::minGrade(){
 
     // If there is no courswork of the selected category in the gradebook, exit the function as there is nothing to calculate
     if(max_pts == 0){
-        std::cout << "There is no courswork of type \"" << category << "\" recorded in your gradebook." << std::endl;
+        std::cout << "\nThere is no courswork of type \"" << category << "\" recorded in your gradebook." << std::endl;
         return;
     }
     // If the student completed all courswork of the selected category, exit the function as there is nothing to calculate
     if(remaining == 0){
-        std::cout << "Your gradebook reads that there is no more coursework of that type to complete this semester. If this does not seem correct, please press 1 in the main menu to print your current corsework or press 6 to add an entry to the gradebook." << std::endl;
+        std::cout << "\nYour gradebook reads that there is no more coursework of that type to complete this semester. If this does not seem correct, please press 1 in the main menu to print your current corsework or press 6 to add an entry to the gradebook." << std::endl;
         return;
     }
 
