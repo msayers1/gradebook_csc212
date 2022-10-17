@@ -30,7 +30,7 @@ class Gradebook
     
     //Helper functions
     int selectionInput(int n);
-    double gradeInput(int max_pts);
+    double gradeInput(double max_pts);
     
     void addEntry();
 
@@ -42,7 +42,7 @@ class Gradebook
 
     void minGrade();
     void whatIfReport();
-    
+    void printCoursework();
     //Loads a new file into memory. 
     void loadNewFile(std::string filename);
     //Saves as a new file. 

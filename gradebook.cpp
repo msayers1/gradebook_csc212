@@ -490,16 +490,16 @@ double Gradebook::finalGrade()
     // now we remove final grades from the total
     for (int j = 0; j < grade.size(); j++)
     {
-        if (category[i] == "exam")
+        if (category[j] == "exam")
         {
-            no_exam -= grade[i]
+            no_exam -= grade[j];
         }
     }
 
     //check if final exam is available
     for (int k = 0; k < grade.size(); k++)
     {
-        if ((category[i] == "exam") && (entered[i] == 0))
+        if ((category[k] == "exam") && (entered[k] == 0))
         {
             theresFinal = false;
         }
@@ -544,7 +544,7 @@ void Gradebook::printCoursework()
     case 1:
         for (int i = 0; i < name.size(); i++)
         {
-            if ((category_value[i] == "assignment") && (entered[i] == 1))
+            if ((category[i] == "assignment") && (entered[i] == 1))
             {
                 std::cout << name[i] << " = " << grade[i] << std::endl;
                 entries_printed++;
