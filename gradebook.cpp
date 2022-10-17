@@ -29,6 +29,8 @@
     
 
 void Gradebook::readFile(std::string filename){
+    // Assigns the filename to a Gradebook data memeber of the same name
+    this->filename = filename;
     // Opens the file for reading
     std::ifstream file(filename);
     // Creates a string to hold each line in temporarily
@@ -83,7 +85,7 @@ void Gradebook::saveFile(std::string filename){
     // Use an i to traverse the assignments
     for(int i = 0; i < length; i++){
         //writes each line of the file. 
-        output_file << std::to_string(id[i]) << " " << name[i] << " " << std::to_string(grade[i]) << " " <<  std::to_string(total_points[i]) << " " <<  category[i] << " " <<  std::to_string(weight[i]) << " " <<  course[i] << " " <<  std::to_string(entered[i]) << "\n";
+        output_file << id[i] << " " << name[i] << " " << grade[i] << " " <<  total_points[i] << " " <<  category[i] << " " <<  weight[i] << " " <<  course[i] << " " <<  entered[i] << "\n";
         //Left for troubleshooting
         //std::cout << name[i] << std::endl;
         //std::cout << id[i] << " " << name[i] << " " <<  grade[i] << " " <<  total_points[i] << " " <<  category[i] << " " <<  weight[i] << " " <<  course[i] << " " <<  entered[i] << std::endl;
