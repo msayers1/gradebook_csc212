@@ -522,7 +522,7 @@ double Gradebook::finalGrade()
         std::cout << "Your final grade is: " << final_grade << "." << std::endl;
 }
 
-void Gradebook::printCourseWork()
+void Gradebook::printCoursework()
 {
 
     // asks user to enter an input to get results.
@@ -535,6 +535,8 @@ void Gradebook::printCourseWork()
 
     // call to function to check if input is valid.
     int input = selectionInput(5);
+    // Keeps track of amount of values printed
+    int entries_printed = 0;
 
     // switch statements for each input
     switch (input)
@@ -545,6 +547,7 @@ void Gradebook::printCourseWork()
             if ((category_value[i] == "assignment") && (entered[i] == 1))
             {
                 std::cout << name[i] << " = " << grade[i] << std::endl;
+                entries_printed++;
             }
         }
         break;
@@ -554,6 +557,7 @@ void Gradebook::printCourseWork()
             if ((category[i] == "lab") && (entered[i] == 1))
             {
                 std::cout << name[i] << " = " << grade[i] << std::endl;
+                entries_printed++;
             }
         }
         break;
@@ -563,6 +567,7 @@ void Gradebook::printCourseWork()
             if ((category[i] == "project") && (entered[i] == 1))
             {
                 std::cout << name[i] << " = " << grade[i] << std::endl;
+                entries_printed++;
             }
         }
         break;
@@ -572,18 +577,25 @@ void Gradebook::printCourseWork()
             if ((category[i] == "exam") && (entered[i] == 1))
             {
                 std::cout << name[i] << " = " << grade[i] << std::endl;
+                entries_printed++;
             }
         }
         break;
     case 5:
         for (int i = 0; i < name.size(); i++)
         {
-            std::cout << name[i] << " = " << grade[i] << std::endl;
+            if(entered[i] = 1){
+                std::cout << name[i] << " = " << grade[i] << std::endl;
+                entries_printed++;
+            }
         }
         break;
 
     default:
         std::cout << std::endl;
         break;
+    }
+     if(entries_printed == 0){
+        std::cout << "\nThere is no coursework of that type." << std::endl;
     }
 }
