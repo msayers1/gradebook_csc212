@@ -78,18 +78,19 @@ Description of each function
             to 100 to represent the grade. This entered grade will be appended to the 
             appropriate data member.
 
-    modifyEntry
+    addGrade
         Type: Void
         Arguments Accepted: None
-            modifyEntry allows the user to modify the grade of coursework already recorded 
-            in the gradebook. The user will be prompted to enter 6 to change a grade or 7 to 
-            remove a grade. After receiving valid input, the user will be prompted to enter 
-            a number 1 to 4. 1 to select assignments. 2 to select labs. 3 to select 
-            projects. 4 to select exams. The user will then be prompted to enter the name of 
-            the assignment they wish to change or remove. If this value is found and 6 was 
-            selected, the user will be prompted to enter a grade that will replace the grade 
-            of said coursework. If this value is found and 7 was selected, the grade will be 
-            removed from the appropriate data member.
+            addGrade asks the user for the assignment which the grade would like to be entered
+            for. Takes a grade input, provides simple input validationm. Then modifies the 
+            grade field and sets the entered field. 
+
+    removeGrade
+        Type: Void
+        Arguments Accepted: None
+            removeGrade asks the user for the assignment which the grade would like to be removed. 
+            Verifies they want to remove the grade. Then sets the grade field to 0 and clears the 
+            entered field. 
 
 
 'why was development like this important to your group?'
