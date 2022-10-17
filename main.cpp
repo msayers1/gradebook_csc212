@@ -19,7 +19,7 @@ int main(int argc, char* argv[]){
     bool running = true;
  
     while(running == true){
-        std::cout << "Press 1 to print coursework." << std::endl;
+        std::cout << "\nPress 1 to print coursework." << std::endl;
         std::cout << "Press 2 to print a category grade." << std::endl;
         std::cout << "Press 3 to print he final frade" << std::endl;
         std::cout << "Press 4 to print minimum grade needed in a category based on a desired grade." << std::endl;
@@ -29,6 +29,7 @@ int main(int argc, char* argv[]){
         std::cout << "Press 7 to remove a grade." << std::endl;
         std::cout << "Press 8 to load a file." << std::endl;
         std::cout << "Press 9 to save as a different file." << std::endl;
+        std::cout << "Press 10 to add a new entry to your gradebook." << std::endl;
         std::cout << "Press 0 to quit" << std::endl;
         std::cout << "Please Make a selection:";
         std::cin >> input;
@@ -40,42 +41,39 @@ bool takeInput(int * input, Gradebook *gradebook){
     std::string input_filename;
     switch(*input){
         case 1:
-            //Call function
-            std::cout << "print coursework" << std::endl;
+            gradebook->printCoursework();
             break;
         case 2:
-            //Call function
-            std::cout << "print a category grade" << std::endl;
+            gradebook->catGrade();
             break;
         case 3:
-            //Call function
-            std::cout << "print he final frade" << std::endl;
+            gradebook->finalGrade();
             break;
         case 4:
-            //Call function
-            std::cout << "print minimum grade needed in a category based on a desired grade" << std::endl;
+            gradebook->minGrade();
             break;
         case 5:
-            //Call function
-            std::cout << "print a final grade based on inputed category grades" << std::endl;
+            gradebook->whatIfReport();
             break;
         case 6:
-            //Call function
             (*gradebook).addGrade();
             break;
         case 7:
-            //Call function
             (*gradebook).removeGrade();
             break;
         case 8:
-            std::cout << "Please enter filename:" << std::endl;
-            std::cin >> input_filename;
-            (*gradebook).loadNewFile(input_filename);
+            // std::cout << "Please enter filename:" << std::endl;
+            // std::cin >> input_filename;
+            // (*gradebook).loadNewFile(input_filename);
+            (*gradebook).addEntry();
             break;
         case 9:
             std::cout << "Please enter filename:" << std::endl;
             std::cin >> input_filename;
             (*gradebook).saveAs(input_filename);
+            break;
+        case 10:
+            (*gradebook).addEntry();
             break;
         case 0:
             return false;
@@ -87,4 +85,3 @@ bool takeInput(int * input, Gradebook *gradebook){
     }
     return true;
 }
-
