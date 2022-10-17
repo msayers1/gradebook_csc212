@@ -17,9 +17,6 @@ class Gradebook
     std::string filename;
     int assignmentCount = 0;
 
-    void readFile(std::string filename);
-    void saveFile(std::string filename);
-
     public:
 
     // default constructor????
@@ -28,14 +25,20 @@ class Gradebook
     // parameter constructor???
     Gradebook(std::string filename);
     
+    // Read and Write Functions
+    void readFile(std::string filename);
+    void saveFile(std::string filename);
+    
     //Helper functions
     int selectionInput(int n);
-    double gradeInput(int max_pts);
+    double gradeInput(double max_pts);
     
     void addEntry();
 
     void addGrade();
     void removeGrade();
+    
+    void printCoursework();
 
     double catGrade();
     double finalGrade();
