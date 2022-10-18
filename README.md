@@ -100,6 +100,7 @@ The outputs are the grades and other information in the file.
 
 **'why was development like this important to your group?'**
 This development was important because it was a learning experience for all involved.
+
 **clear, conscientious comments embedded within the your code**
 
 **provide detailed instructions how to compile your algorithm, including:
