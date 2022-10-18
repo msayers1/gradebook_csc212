@@ -99,7 +99,7 @@
 
 
 **'why was development like this important to your group?'**
-- This development was important because it was a learning experience for all involved. This is a real project where all group members were able to contribute what they've learned to practical use. The gradebook will also alleviate the stessors of know where each individual stands in regards to their grade to the class. 
+- This development was important because it was a learning experience for all involved. This is a real project where all group members were able to contribute what they've learned to practical use. The gradebook will also alleviate the stessors of know where each individual stands in regards to their grade for the data structures class. 
 
 **clear, conscientious comments embedded within the your code**
 
