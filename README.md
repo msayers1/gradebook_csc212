@@ -8,16 +8,16 @@ Michael Sayers msayers1, Vanessa Melgar vmelgar9272, Linda Tran lindaqtran, Shin
 **This purpose of the project is to keep track of individual grades to understand where the students stand in regards to CSC 212 data structures course. The project helps build an algorithm to analyze the grades into a final grade. There will be a series of functions that will help build the algorithm for the calculations provided which is under the description section of the README.md.** 
 
 **proof of planning: pseudocode (and or flowcharts showing program logic if desired)**
-The original commit of the readme file and the pseudocode file were proof of planning. 
+-The original commit of the readme file and the pseudocode file were proof of planning. 
 
 **describe features of the algorithm**
-The algorithm is a full application which can load the grade file, save the grade file. When the grade file is loaded, it can print out all grades or just a category. It can print the final grade or average of the categories. It can give you the minimum grade you need in a category. And run through what if situations. It can add an assignment that is added to the course. It can add or modify the grades, or clear the grade if entered incorrectly. 
+-The algorithm is a full application which can load the grade file, save the grade file. When the grade file is loaded, it can print out all grades or just a category. It can print the final grade or average of the categories. It can give you the minimum grade you need in a category. And run through what if situations. It can add an assignment that is added to the course. It can add or modify the grades, or clear the grade if entered incorrectly. 
 
 **'what input can it take in'**
-The input is the file, must be formated correctly like the blank.txt is formatted.
+-The input is the file, must be formated correctly like the blank.txt is formatted.
 
 **'what is/are the output(s) you can receive back?'**
-The outputs are the grades and other information in the file.
+-The outputs are the grades and other information in the file.
 
 **Description of each function**
 
@@ -99,14 +99,14 @@ The outputs are the grades and other information in the file.
 
 
 **'why was development like this important to your group?'**
-This development was important because it was a learning experience for all involved.
+- This development was important because it was a learning experience for all involved.
 
 **clear, conscientious comments embedded within the your code**
 
 **provide detailed instructions how to compile your algorithm, including:
 how to input data**
-You enter data by having a file ready or using the application. 
+- You enter data by having a file ready or using the application. 
 
 **how to compile each/any option from your feature set**
-g++ -g -std=c++11 main.cpp gradebook.cpp -o output && ./output 
+- g++ -g -std=c++11 main.cpp gradebook.cpp -o output && ./output 
 or use your own compiler making sure you include main.cpp and gradebook.cpp, and choose your own function. 
