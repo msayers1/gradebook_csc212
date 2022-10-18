@@ -343,6 +343,7 @@ double Gradebook::catGrade(){
 
     // Counter for grades found in this category
     int grade_counter = 0;
+    double max_pts = 0;
  
     // goes through the gradebook
     for(int i = 0; i < id.size(); i++){
@@ -353,14 +354,18 @@ double Gradebook::catGrade(){
             grade_counter++;
             // adds the sum of the specific category
             sum += grade[i];
+            max_pts += total_points[i];
         }
     }
     if(grade_counter == 0){
         std::cout << "There are no grades listed in this category, cannot do calculations. " << std::endl;
     }
-    avg = sum / grade_counter;
-    // prints out to the user what the average of the category is.
-    std::cout << std::setprecision(3) << "\nThe calculated average for this category is " << avg << std::endl;
+    else{
+        avg = sum / max_pts * 100;
+        // prints out to the user what the average of the category is.
+        std::cout << std::setprecision(3) << "\nThe calculated average for this category is " << avg << std::endl;
+        return avg;
+    }
     return avg;
 }
 
