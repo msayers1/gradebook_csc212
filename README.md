@@ -1,14 +1,14 @@
 # gradebook_csc212
 
 **group memebr names:**
-Michael Sayers msayers1, Vanessa Melgar vmelgar9272, Linda Tran lindaqtran, Shina Adewumi fa-adewumi
+- Michael Sayers msayers1, Vanessa Melgar vmelgar9272, Linda Tran lindaqtran, Shina Adewumi fa-adewumi
 
 **a brief summary of the project and github repo address (with allowed access for viewing) for member contributions (most easily shown through commits in the repo where your project lives)**
 
 - This purpose of the project is to keep track of individual grades to understand where the students stand in regards to CSC 212 data structures course. The project helps build an algorithm to analyze the grades into a final grade. There will be a series of functions that will help build the algorithm for the calculations provided which is under the description section of the README.md.
 
 **proof of planning: pseudocode (and or flowcharts showing program logic if desired)**
--The original commit of the readme file and the pseudocode file were proof of planning. 
+- The original commit of the readme file and the pseudocode file were proof of planning. 
 
 **describe features of the algorithm**
 - The algorithm is a full application which can load the grade file, save the grade file. When the grade file is loaded, it can print out all grades or just a category. It can print the final grade or average of the categories. It can give you the minimum grade you need in a category. And run through what if situations. It can add an assignment that is added to the course. It can add or modify the grades, or clear the grade if entered incorrectly. 
