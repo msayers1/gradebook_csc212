@@ -6,6 +6,8 @@ Michael Sayers msayers1, Vanessa Melgar vmelgar9272, Linda Tran lindaqtran, Shin
 
 a brief summary of the project and github repo address (with allowed access for viewing) for member contributions (most easily shown through commits in the repo where your project lives)
 
+This purpose of the project is to keep track of individual grades to understand where the students stand in regards to CSC 212 data structures course. The project helps build an algorithm to analyze the grades into a final grade.
+
 proof of planning: pseudocode (and or flowcharts showing program logic if desired)
 
 describe features of the algorithm
