@@ -11,13 +11,13 @@ Michael Sayers msayers1, Vanessa Melgar vmelgar9272, Linda Tran lindaqtran, Shin
 -The original commit of the readme file and the pseudocode file were proof of planning. 
 
 **describe features of the algorithm**
--The algorithm is a full application which can load the grade file, save the grade file. When the grade file is loaded, it can print out all grades or just a category. It can print the final grade or average of the categories. It can give you the minimum grade you need in a category. And run through what if situations. It can add an assignment that is added to the course. It can add or modify the grades, or clear the grade if entered incorrectly. 
+- The algorithm is a full application which can load the grade file, save the grade file. When the grade file is loaded, it can print out all grades or just a category. It can print the final grade or average of the categories. It can give you the minimum grade you need in a category. And run through what if situations. It can add an assignment that is added to the course. It can add or modify the grades, or clear the grade if entered incorrectly. 
 
 **'what input can it take in'**
--The input is the file, must be formated correctly like the blank.txt is formatted.
+- The input is the file, must be formated correctly like the blank.txt is formatted.
 
 **'what is/are the output(s) you can receive back?'**
--The outputs are the grades and other information in the file.
+- The outputs are the grades and other information in the file.
 
 **Description of each function**
 
