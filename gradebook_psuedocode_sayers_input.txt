@@ -3,12 +3,33 @@ gradebook.h/gradebook.cpp
     takes the file data and populates the members of the class. 
     
     methods:
+        selectionInput(int n){
+            Initializes variable for input
+            Set a boolean (selection_invalid) to true to represent an invalid input
+            Requests integer input from 1 to parameter until selection_invalid becomes false
+        gradeInput
+            Initializes variable (selection_invalid) for input
+            Sets a boolean to true to represent an invalid input
+            Requests double input from 0 to parameter until selection_invalid becomes false
+        addEntry
+            Record new index, id and name of course of new entry
+            Add to Gradebook's assignment counter
+            Requests total points the coursework is worth
+            Requests weight of the coursework
+            Asks if the courswork has been completed yet
+                If so, a grade is requested
+            Requests category of coursework
+            Requests name of assignment
+            Saves the file after all new information is added to the Gradebook
         record grade
             ask for assignment
             ask for grade
             record grade in assignment
             change entered to 1
             print statement of what was recorded. 
+        removeGrade
+            Request grade to be removed
+            Ask for confirmation of deletion
         report current grade
             pull the grades that have been entered
             calculate grade 
@@ -22,7 +43,17 @@ gradebook.h/gradebook.cpp
             caculate how many points are left
             caculate average of assignment left ( points needed / points are left )
             print needed average statement. 
-        ask for category and report grades in that category
+        printCoursework
+            ask for category and report grades in that category
+        whatIfReport
+            Ask user to input hypothetical grades for each category
+            Asks the user if they wish to include the final exam
+                If no selected, final exam grade automatically 100 for the calculation
+                If yes selected, request a grade
+            Calculate the hypothetical final grade with the given values
+            Prints grade
+            If no final exam inputted, print whether they are exempt from taking it
+
 
 file.h/file.cpp
     Read/Load input/data
