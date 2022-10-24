@@ -479,59 +479,60 @@ void Gradebook::whatIfReport(){
 
 double Gradebook::finalGrade()
 {
-    // variables to store grade with and without exam available
-    double final_grade, no_exam, examPercent_final, examPercent_nofinal;
+    // variables to store grade and the maximum points a student could earn
+    double final_grade = 0, max_pts = 0;
 
     // this bool will check if final exam is available
-    bool theresFinal = true;
+    bool exam_taken = true;
+    bool coursework_completed = true;
 
     // add up the grades
-    for (int i = 0; i < grade.size(); i++)
-    {
-        final_grade += grade[i];
-    }
-
-    // set the other vairable to the sum of all the grades
-    no_exam = final_grade;
-
-    // now we remove final grades from the total
-    for (int j = 0; j < grade.size(); j++)
-    {
-        if (category[j] == "exam")
-        {
-            no_exam -= grade[j];
+    for (int i = 0; i < grade.size(); i++){
+        // If the gradebook has uncompleted work besides the exam
+        if(entered[i] == 0 && category[i] != "exam"){
+            coursework_completed = false;
+        }
+        // Checks if the exam was taken
+        if(category[i] == "exam" && entered[i] == 1){
+            exam_taken = true;
+        }
+        // If assignment completed, add to sum
+        if(entered[i] == 1){
+            final_grade += grade[i];
+            max_pts += total_points[i];
         }
     }
-
-    // check if final exam is available
-    for (int k = 0; k < grade.size(); k++)
-    {
-        if ((category[k] == "exam") && (entered[k] == 0))
-        {
-            theresFinal = false;
-        }
+    // If there are no entered grades,
+    if(max_pts == 0){
+        std::cout << "There are no grades currently in gradebook." << std::endl;
+        final_grade = 0;
+        return final_grade;
     }
+    final_grade /= max_pts / 100;
 
-    examPercent_nofinal = (no_exam / 1000) * 100;
-
-    examPercent_final = (final_grade / 1000) * 100;
-
-    // print the grade depening on the presence or absence of a final exam grade
-    if (theresFinal == false)
-    {
-        if (no_exam > 900)
-        {
-            std::cout << "your grade without your final exam is " << no_exam << "/1000 or " << examPercent_nofinal << "%.z you are exempt from the final exam" << std::endl;
-        }
-        else
-        {
-            std::cout << "your grade without your final exam is " << no_exam << "/1000 or " << examPercent_nofinal << "%. you are not exempt from the final exam" << std::endl;
-        }
+    //print the grade depening on the presence or absence of a final exam grade
+    if(!coursework_completed){
+        std::cout << "Uncompleted courswork was found. As of now, your current grade is: "; 
     }
-    else
-        std::cout << "Your final grade is: " << final_grade << " or " << examPercent_final << "%." << std::endl;
+    else{
+        std::cout << "Final Grade: ";
+    }
+    std::cout << final_grade << std::endl;
+    if (exam_taken == false){
+        std::cout << "Exempt from final exam: ";
+        if (final_grade > 90){
+            std::cout << "Yes" << std::endl;
+        }
+        else{
+            std::cout << "No" << std::endl;
+        }
+    }    
+
+
     return final_grade;
 }
+
+
 
 void Gradebook::printCoursework()
 {
