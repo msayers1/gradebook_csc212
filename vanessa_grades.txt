@@ -13,7 +13,7 @@
 13 lab8 0 5 lab 100 csc212 0
 14 lab9 0 5 lab 100 csc212 0
 15 lab10 0 5 lab 100 csc212 0
-16 mec_project_pt1 0 15 project 0 csc212 0
-17 mec_project_pt2 0 15 project 0 csc212 0
+16 mec_project_pt1 0 15 extra_credit 0 csc212 0
+17 mec_project_pt2 0 15 extra_credit 0 csc212 0
 18 final_project 0 350 project 100 csc212 0
 19 final_exam 0 100 exam 100 csc212 0
