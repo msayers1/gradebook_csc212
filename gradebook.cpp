@@ -480,7 +480,7 @@ void Gradebook::whatIfReport(){
 double Gradebook::finalGrade()
 {
     // variables to store grade with and without exam available
-    double final_grade, no_exam;
+    double final_grade, no_exam, examPercent_final, examPercent_nofinal;
 
     // this bool will check if final exam is available
     bool theresFinal = true;
@@ -503,7 +503,7 @@ double Gradebook::finalGrade()
         }
     }
 
-    //check if final exam is available
+    // check if final exam is available
     for (int k = 0; k < grade.size(); k++)
     {
         if ((category[k] == "exam") && (entered[k] == 0))
@@ -512,21 +512,24 @@ double Gradebook::finalGrade()
         }
     }
 
+    examPercent_nofinal = (no_exam / 1000) * 100;
 
-//print the grade depening on the presence or absence of a final exam grade
+    examPercent_final = (final_grade / 1000) * 100;
+
+    // print the grade depening on the presence or absence of a final exam grade
     if (theresFinal == false)
     {
         if (no_exam > 900)
         {
-            std::cout << "your grade without your final exam is " << no_exam << " you are exempt from the final exam" << std::endl;
+            std::cout << "your grade without your final exam is " << no_exam << "/1000 or " << examPercent_nofinal << "%.z you are exempt from the final exam" << std::endl;
         }
         else
         {
-            std::cout << "your grade without your final exam is " << no_exam << " you are not exempt from the final exam" << std::endl;
+            std::cout << "your grade without your final exam is " << no_exam << "/1000 or " << examPercent_nofinal << "%. you are not exempt from the final exam" << std::endl;
         }
     }
     else
-        std::cout << "Your final grade is: " << final_grade << "." << std::endl;
+        std::cout << "Your final grade is: " << final_grade << " or " << examPercent_final << "%." << std::endl;
     return final_grade;
 }
 
