@@ -110,3 +110,11 @@ how to input data**
 **how to compile each/any option from your feature set**
 - g++ -g -std=c++11 main.cpp gradebook.cpp -o output && ./output 
 or use your own compiler making sure you include main.cpp and gradebook.cpp, and choose your own function. 
+
+Video:
+
+https://somup.com/c36Onsvuvg
+Part 1: explanation of program
+
+https://somup.com/c36O10vug7
+Part 2: implementation 
