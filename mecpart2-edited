@@ -1,0 +1,36 @@
+The gradebook was a simple exercise to have the students work together and brush off
+their basic C++ knowledge. Three main thrusts of improving the gradebook would be to have it
+tied to a database, which most likely be the same database the software it is incorporating into
+would be using; error handling; and incorporate a student id to each record. This would greatly
+improve the gradebook.
+
+Tying the gradebook to the database which the software uses, would allow the
+algorithm to more consistently store data and retrieve data. It would allow also allow the users
+and administrators of the software to compile the data across students and classes to use in
+analysis of the classes and the student’s performance. Students would be able to track their
+progress through each class quickly and easily. The database would be able to facilitate the
+calculated columns which would reduce the memory used. Time analysis could be used to
+ensure that each interaction with the database is optimized.
+
+Error handling would be needed to improve the performance of the algorithm. The
+ability of the algorithm to deal with incorrect entries better and advise the user of the error
+would be beneficial. A hash table with error codes and error messages could be used to quickly
+pull up the correct message. It would be a great time saver.
+
+A student id tied to each record would allow for the quick searching of a particular
+student’s record. This would improve the gradebook and allow it to be used by multiple
+students and instructors also. Another hash table or map could be used to record the location
+of each student’s record. The algorithm would be able to pull up the pertinent information and
+be able to return results efficiently.
+
+Some other components to improve the optimization of the program could be looking at certain ways to 
+approach tasks. For example, instead of writing lines of code to do a certain task, we can find an imported 
+library that will perform the task for us. Something that could be applicable would be finding min and max. 
+Also, make sure that looking over our code to make sure there are no unneeded variables to make the code more efficient 
+because each person was responsible to write different sections of code.  
+
+These improvements would allow the gradebook to have an expanded use and widened
+audience of users. The improved gradebook would allow the students and instructors to be able
+to track the student’s performance more succinctly to improve and attain a higher grade. The
+university would benefit from this communication with higher pass rates in key courses which
+had struggled previously without the communication.
